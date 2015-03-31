@@ -9,41 +9,41 @@ angular
  		//this is my gameboard
  		self.board = [
  		{
- 			name: "square1",
+ 			box: "1",
  			piece: null
  		}, {
- 			name: "square2",
+ 			box: "2",
  			piece: null
  		}, {
- 			name: "square3",
+ 			box: "3",
  			piece: null
  		}, {
- 			name: "square4",
+ 			box: "4",
  			piece: null
  		}, {
- 			name: "square5",
+ 			box: "5",
  			piece: null
  		}, {
- 			name: "square6",
+ 			box: "6",
  			piece: null
  		}, {
- 			name: "square7",
+ 			box: "7",
  			piece: null
  		}, {
- 			name: "square8",
+ 			box: "8",
  			piece: null
  		}, {
- 			name: "square9",
+ 			box: "9",
  			piece: null
  		}];
 
  		//two players
-		self.player1 = 0;
-		self.player2 = 0;
+		self.turn = 0;
 		self.isDisabled = false;
+		self.winCombos = [["1", "2", "3"], []]
 		//
 		self.setSquare = function ($index){
-			self.board[$index].piece = self.player1;
+			self.board[$index].piece = self.turn;
 			self.toggle();
 			console.log(self.board[$index]);
 			};
@@ -56,12 +56,11 @@ angular
 
 		};
 	}
-		
-	
+
+
 
 })();
 
-		
 
-					
-	
+
+
