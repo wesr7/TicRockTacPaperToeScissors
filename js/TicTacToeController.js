@@ -38,12 +38,14 @@ angular
  		}];
 
  		//two players
-		self.turn = 0;
-		self.player2 = '0';
+		self.player1 = 0;
+		self.player2 = 0;
+		self.isDisabled = false;
 		//
 		self.setSquare = function ($index){
-			self.board[$index].piece = self.turn;
+			self.board[$index].piece = self.player1;
 			self.toggle();
+			console.log(self.board[$index]);
 			};
 		self.toggle = function () {
 			if(self.turn===0) {
@@ -51,6 +53,7 @@ angular
 			} else if (self.turn===1) {
 				self.turn--;
 			}
+
 		};
 	}
 		
