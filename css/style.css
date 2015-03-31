@@ -6,7 +6,7 @@ body {
 .wrapper {
 	width:  0 auto;
 	height: 1000px;
-	background: red;
+	background: white;
 }
 
 header {
@@ -25,100 +25,36 @@ header {
 }
 .tic-tac-toe {
 	position: relative;
-	top: 40%;
 	border: 5px solid black;
-	width: 500px;
-	height: 500px;
-	margin-left: 420px;
+	width: 411px;
+	height: 450px;
+	margin: 0 auto;
+	padding-left: 10px;
 }
-#box-a
+.box
 	{
 	height: 125px;
 	width: 125px;
 	border: 1px solid black;
-	display: inline-block;
-	position: relative;
-	top: 25%;
-	transform: translateY(-50%);
+	margin-right: 10px;
+	margin-top: 20px;
+	float: left;
+}
 
+.box:hover {
+	background: blue;
 }
-#box-b
-	{
-	height: 125px;
-	width: 125px;
-	border: 1px solid black;
-	display: inline-block;
-	position: relative;
-	top: 25%;
-	transform: translateY(-50%);
+.box-click {
+	background: red;
 }
-#box-c
-	{
-	height: 125px;
-	width: 125px;
-	border: 1px solid black;
-	display: inline-block;
-	position: relative;
-	top: 25%;
-	transform: translateY(-50%);
+.left-container {
+	border: 1px black solid;
+	float: left;
 }
-#box-d
-	{
-	height: 125px;
-	width: 125px;
-	border: 1px solid black;
-	display: inline-block;
-	position: relative;
-	top: 25%;
-	transform: translateY(-50%);
+.right-container{
+	border: 1px black solid;
+	float: right;
 }
-#box-e
-	{
-	height: 125px;
-	width: 125px;
-	border: 1px solid black;
-	display: inline-block;
-	position: relative;
-	top: 25%;
-	transform: translateY(-50%);
-}
-#box-f
-	{
-	height: 125px;
-	width: 125px;
-	border: 1px solid black;
-	display: inline-block;
-	position: relative;
-	top: 25%;
-	transform: translateY(-50%);
-}
-#box-g
-	{
-	height: 125px;
-	width: 125px;
-	border: 1px solid black;
-	display: inline-block;
-	position: relative;
-	top: 25%;
-	transform: translateY(-50%);
-}
-#box-h
-	{
-	height: 125px;
-	width: 125px;
-	border: 1px solid black;
-	display: inline-block;
-	position: relative;
-	top: 25%;
-	transform: translateY(-50%);
-}
-#box-i
-	{
-	height: 125px;
-	width: 125px;
-	border: 1px solid black;
-	display: inline-block;
-	position: relative;
-	top: 25%;
-	transform: translateY(-50%);
+.red {
+	background: red;
 }
