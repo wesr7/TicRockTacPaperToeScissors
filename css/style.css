@@ -3,10 +3,15 @@ body {
 	text-align: center;
 }
 
+h1 {
+	font-family: 'Shadows Into Light', cursive;
+	font-size: 50px;
+}
 .wrapper {
-	width:  0 auto;
-	height: 1000px;
-	background: white;
+	margin:  0 auto;
+	width: 960px;
+	height: 720px;
+	background: green;
 }
 
 header {
@@ -30,6 +35,7 @@ header {
 	height: 450px;
 	margin: 0 auto;
 	padding-left: 10px;
+	border-radius: 15px;
 }
 .box
 	{
@@ -37,12 +43,14 @@ header {
 	width: 125px;
 	border: 1px solid black;
 	margin-right: 10px;
-	margin-top: 20px;
+	margin-top: 18px;
 	float: left;
+	border-radius: 10px;
+	font-size: 50px;
 }
 
 .box:hover {
-	background: blue;
+	background: grey;
 }
 .box-click {
 	background: red;
@@ -50,10 +58,18 @@ header {
 .left-container {
 	border: 1px black solid;
 	float: left;
+	background: red;
+	height: 300px;
+	width: 125px;
+	margin-left: 60px;
 }
 .right-container{
 	border: 1px black solid;
 	float: right;
+	background: red;
+	height: 300px;
+	width: 125px;
+	margin-right: 60px;
 }
 .red {
 	background: red;

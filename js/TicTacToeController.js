@@ -40,12 +40,11 @@ angular
  		//two players
 		self.turn = 0;
 		self.isDisabled = false;
-		self.winCombos = [["1", "2", "3"], []]
+		self.winCombos = [["1", "2", "3"], ["4", "5", "6"], ["7", "8", "9"], ["1", "4", "7"], ["2", "5", "8"], ["3", "6", "9"], ["1", "5", "9"], ["3", "5", "9"]];
 		//
 		self.setSquare = function ($index){
 			self.board[$index].piece = self.turn;
 			self.toggle();
-			console.log(self.board[$index]);
 			};
 		self.toggle = function () {
 			if(self.turn===0) {
