@@ -1,40 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="TicApp">
 <head >
 	<title>Play Tic Tac Toe!</title>
 
 	<script src="js/angular.min.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://cdn.firebase.com/js/client/2.2.3/firebase.js"></script>
 
-	<link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
+	<script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
 
 	<script src="js/main.js"></script>
 
 	<script src="js/TicTacToeController.js"></script>
 
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
 
 </head>
-<body ng-app="TicApp">
-<section id="TicTacToe" ng-controller="TicTacToeController as tictacs">
-	<div class="wrapper">
-		<h1>Tic Tac Toe</h1>
-		<div class="left-container">
-			<div class="score">00</div>
-		</div>
-		<div class="middle-container">
+<body >
+	<section id="TicTacToe" ng-controller="TicTacToeController as TTT">
 
-		</div>
-		<div class="right-container">
-			<div class="score">00</div>
-		</div>
-		<div class="tic-tac-toe">
+		<div class="wrapper">
 
-			<div class="box" ng-repeat="tictac in tictacs.board" ng-click="tictacs.setSquare($index)">{{tictac.piece}}</div>
+			<h1>Tic Tac Toe</h1>
 
+			<h2> {{ TTT.showWinner  }}  {{ TTT.showCats }}</h2>
+
+			<div class="left-container">
+
+
+				<form ng-submit = "TTT.player1(TTT.newPlayer1Name)">
+
+					<input type = "text" ng-model="TTT.newPlayer1Name" placeholder="Team Name Here">
+
+				</form>
+
+			</div>
+			<div class="middle-container">
+			</div>
+			<div class="right-container">
+
+				<form ng-submit = "TTT.player2(TTT.newPlayer2Name)">
+
+					<input type = "text" ng-model="TTT.newPlayer2Name" placeholder="Team Name Here">
+
+			</div>
+
+			<div class="tic-tac-toe">
+
+				<div class="box" ng-bind="TTT.grid[$index].box" ng-repeat="box in TTT.grid" ng-click="TTT.getMove($index)"></div>
+
+			</div>
+
+			<div id = "reset">
+			 <a href="#" id="resetGame" ng-click="TTT.resetGame()">Start New Game</a>
+			 </div>
 		</div>
-	</div>
-	<!-- <script src="js/app.js"></script> -->
+			<!-- <script src="js/app.js"></script> -->
 	</section>
 </body>
 </html>

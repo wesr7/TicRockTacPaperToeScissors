@@ -1,6 +1,7 @@
 (function(){
 
-angular.module("TicApp", []);
+angular
+        .module("TicApp", ['firebase']);
 
 
 })();
