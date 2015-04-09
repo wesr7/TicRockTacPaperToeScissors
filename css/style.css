@@ -70,9 +70,20 @@ header {
 .red {
 	background: red;
 }
+.team-name {
+	font-size: 80px;
+	font-family: 'Shadows Into Light', cursive;
+	width: 50px;
 
-form { text-align: left; }
-label { display:block; margin: 1em; }
+}
+
+form {
+	text-align: left;
+}
+label {
+	display:block;
+	margin: 1em;
+}
 input {
 	display: inline-block;
 	padding: 0.382em;
@@ -93,7 +104,7 @@ input[type=submit]{
 	color: white;
 }
 
-
+/*reset/start game button*/
 #reset {
 	-moz-box-shadow:inset 0px 0px 6px 4px #ffffff;
 	-webkit-box-shadow:inset 0px 0px 6px 4px #ffffff;
@@ -134,4 +145,11 @@ input[type=submit]{
 a {
 	color: inherit;
 	font-family: 'Shadows Into Light', cursive;
+}
+#p1-form {
+	display: inline-block;
+
+}
+#submit1 {
+	padding: 5px, 5px, 5px, 5px;
 }

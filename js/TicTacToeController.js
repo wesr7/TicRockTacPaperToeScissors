@@ -8,100 +8,123 @@
 
 	function TicTacToeController ($firebaseArray, $firebaseObject) {
 
-		var self = this;
-                        self.turn = 1;
-                        self.turnCounter = 0;
-                        self.player1 = player1;
-                        self.player2 = player2;
-                        self.game = tttGame();
-                        self.getMove = getMove;
-                        self.gameWinner = gameWinner;
-		self.resetGame = resetGame;
- 		self.grid = [
- 		{box: ""}, {box: ""}, {box: ""}, {box: ""}, {box: ""}, {box: ""}, {box: ""}, {box: ""}, {box: ""}];
-                          console.log(self.grid);
+                // Capture Variable
+                self = this;
 
-            function tttGame() {
+                // Firebase Reference
+                var ref = new Firebase("https://westttapp.firebaseio.com/");
+                self.game = $firebaseObject(ref);
 
-                        var ref = new Firebase("https://westttapp.firebaseio.com/");
-                        var game = $firebaseObject(ref);
-                        return game;
-                        }
+                // Properties
+                self.game.turn = 1;
+                self.game.turnCounter = 0;
+                self.game.grid = [
+                {box: ""}, {box: ""}, {box: ""}, {box: ""}, {box: ""}, {box: ""}, {box: ""}, {box: ""}, {box: ""}];
+
+                // self.player1 = "";
+                // self.player2 = "";
+                      self.getMove = getMove;
+                      self.gameWinner = gameWinner;
+                self.resetGame = resetGame;
+                self.assignPlayer = assignPlayer();
+                self.playerID = "";
+                self.game.Slot1 = "false";
+                self.game.Slot2 = "false";
+                self.game.$save();
+
+                // Firebase Slot for Player 1 and Player 2 - true - true
+                // function to determine if slot 1 is full, assign next player that opens browser to slot 2
+
+                function assignPlayer() {
+                    if (!self.game.Slot1) {
+                        self.playerID = 1;
+                        self.game.Slot1 = true;
                         self.game.$save();
-
-            function player1() {
-
-                        self.game.player1 = player1;
+                    } else if (self.game.Slot1) {
+                        self.playerID = 2;
+                        self.game.Slot2 = true;
                         self.game.$save();
-            }
-            function player2() {
+                    } else if (self.game.Slot1 && self.game.Slot2) {
+                        alert("Game is occupied.");
+                    }
+                }
 
-                        self.game.player2 = player2;
-                        self.game.$save();
-            }
+            // function player1() {
+
+            //             self.player1 = "";
+
+            // }
+            // function player2() {
+
+            //             self.player2 = "";
+
+            // }
 
             function getMove (index) {
-                self.turnCounter++;
+                self.game.turnCounter++;
 
-                        if (self.grid[index].box){
+                        if (self.game.grid[index].box){
                                     return false;
-                        } if (self.turn===1){
-                        self.grid[index].box = "X";
-                                    self.turn++;
+                        } if (self.game.turn===1 && !self.game.gameOver && self.playerID === 1){
+                        self.game.grid[index].box = "X";
+                                    self.game.turn++;
                         self.game.$save();
-                        } else {
-                        self.grid[index].box = "O";
-                                    self.turn--;
+                        } else if (self.game.turn ===2 && !self.game.gameOver && self.playerID ===2) {
+                        self.game.grid[index].box = "O";
+                                    self.game.turn--;
                         self.game.$save();
                         }
-                        gameWinner(self.grid[index].box);
+                        gameWinner(self.game.grid[index].box);
                         self.game.$save();
             }
 
             function gameWinner(item) {
                         console.log(item);
 
-                        if((self.grid[0].box === item && self.grid[1].box === item && self.grid[2].box === item) ||
+                        if((self.game.grid[0].box === item && self.game.grid[1].box === item && self.game.grid[2].box === item) ||
 
-                            (self.grid[3].box === item && self.grid[4].box === item && self.grid[5].box === item) ||
+                            (self.game.grid[3].box === item && self.game.grid[4].box === item && self.game.grid[5].box === item) ||
 
-                            (self.grid[6].box === item && self.grid[7].box === item && self.grid[8].box === item) ||
+                            (self.game.grid[6].box === item && self.game.grid[7].box === item && self.game.grid[8].box === item) ||
 
-                            (self.grid[0].box === item && self.grid[3].box === item && self.grid[6].box === item) ||
+                            (self.game.grid[0].box === item && self.game.grid[3].box === item && self.game.grid[6].box === item) ||
 
-                            (self.grid[1].box === item && self.grid[4].box === item && self.grid[7].box === item) ||
+                            (self.game.grid[1].box === item && self.game.grid[4].box === item && self.game.grid[7].box === item) ||
 
-                            (self.grid[2].box === item && self.grid[5].box === item && self.grid[8].box === item) ||
+                            (self.game.grid[2].box === item && self.game.grid[5].box === item && self.game.grid[8].box === item) ||
 
-                            (self.grid[0].box === item && self.grid[4].box === item && self.grid[8].box === item) ||
+                            (self.game.grid[0].box === item && self.game.grid[4].box === item && self.game.grid[8].box === item) ||
 
-                            (self.grid[2].box === item && self.grid[4].box === item && self.grid[6].box === item)
+                            (self.game.grid[2].box === item && self.game.grid[4].box === item && self.game.grid[6].box === item)
                             ){
-                                self.showWinner = item + " is the WINNER!!!!";
-                                console.log(item + " win");
+                                self.game.showWinner = item + " is the WINNER!!!!";
+                                self.game.gameOver = true;
+                                self.game.$save();
                             }
                                 else {
                             if(
-                                self.turnCounter === 9
+                                self.game.turnCounter === 9
                                 )
-                            self.showCats = "CATS GAME!!!";
-
+                            self.game.showCats = "CATS GAME!!!";
+                            self.game.$save();
                             }
                         }
 
 
             function resetGame() {
-                        self.turn = 1;
-                        self.turnCounter = 9;
-                        self.showWinner = "";
-                        self.showCats = "";
+                        self.game.turn = 1;
+                        self.game.turnCounter = 0;
+                        self.game.showWinner = "";
+                        self.game.showCats = "";
+                        self.game.gameOver = false;
 
-                        for (var i = 0; i < self.grid.length; i++) {
-                            self.grid[i].box = "";
-                            console.log(self.grid[i].box);
+                        for (var i = 0; i < self.game.grid.length; i++) {
+                            self.game.grid[i].box = "";
+                            console.log(self.game.grid[i].box);
                         }
+                        self.game.$save();
             }
-	}
+}
 })();
 
 

@@ -23,17 +23,17 @@
 
 		<div class="wrapper">
 
-			<h1>Tic Tac Toe</h1>
+			<h1>just Tic Tac Toe</h1>
 
 			<h2> {{ TTT.showWinner  }}  {{ TTT.showCats }}</h2>
 
 			<div class="left-container">
 
 
-				<form ng-submit = "TTT.player1(TTT.newPlayer1Name)">
-
-					<input type = "text" ng-model="TTT.newPlayer1Name" placeholder="Team Name Here">
-
+				<form id = "p1-form">
+					<input type= "text" ng-model= "TTT.player1" ng-hide= "player1name" placeholder="Enter Team Name" >
+					<button id="Submit1" ng-hide="player1name" ng-click= "player1name= 'false'">+</button>
+					<div class = "team-name">{{TTT.player1}}</div>
 				</form>
 
 			</div>
@@ -43,13 +43,13 @@
 
 				<form ng-submit = "TTT.player2(TTT.newPlayer2Name)">
 
-					<input type = "text" ng-model="TTT.newPlayer2Name" placeholder="Team Name Here">
-
+					<input type = "text" ng-model="TTT.player2" placeholder="Enter Team Name">
+					<div class = team-name>{{TTT.player2}}</div>
 			</div>
 
 			<div class="tic-tac-toe">
 
-				<div class="box" ng-bind="TTT.grid[$index].box" ng-repeat="box in TTT.grid" ng-click="TTT.getMove($index)"></div>
+				<div class="box" ng-bind="TTT.game.grid[$index].box" ng-repeat="box in TTT.game.grid" ng-click="TTT.getMove($index)"></div>
 
 			</div>
 
