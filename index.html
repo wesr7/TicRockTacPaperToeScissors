@@ -31,7 +31,7 @@
 				<form ng-submit="TTT.setPlayer1(player1name)" id="p1-form">
 					<input type= "text" ng-model= "player1name" ng-hide="TTT.game.Player1" placeholder="Player 1 name.." >
 					<div class = "team-name">{{TTT.game.Player1}}</div>
-				</form>
+				</form></br></br>
 				<button id="Submit1" ng-hide="TTT.game.Player1" ng-click="TTT.setPlayer1(player1name)">Join</button>
 				<p ng-show="TTT.game.P1Move">Your move!</p>
 			</div>
@@ -43,7 +43,7 @@
 				<form ng-submit = "TTT.setPlayer2(player2Name)">
 					<input type = "text" ng-hide="TTT.game.Player2" ng-model="player2Name" placeholder="Player 2 name..">
 					<div class = team-name>{{TTT.game.Player2}}</div>
-				</form>
+				</form></br>
 				<button id="Submit1" ng-hide="TTT.game.Player2" ng-click="TTT.setPlayer2(player2Name)">Join</button>
 				<p ng-show="TTT.game.P2Move">Your move!</p>
 			</div>

@@ -63,9 +63,11 @@ header {
 }
 .left-container {
 	float: left;
+	margin-left: 72px;
 }
 .right-container{
 	float: right;
+	margin-right: 75px;
 }
 .red {
 	background: red;
@@ -146,8 +148,8 @@ a {
 	color: inherit;
 	font-family: 'Shadows Into Light', cursive;
 }
-#p1-form {
-	display: inline-block;
+/*#p1-form {
+	display: inline-block;*/
 
 }
 #submit1 {
