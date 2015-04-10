@@ -28,34 +28,36 @@
 			<h2> {{ TTT.showWinner  }}  {{ TTT.showCats }}</h2>
 
 			<div class="left-container">
-
-
-				<form id = "p1-form">
-					<input type= "text" ng-model= "TTT.player1" ng-hide= "player1name" placeholder="Enter Team Name" >
-					<button id="Submit1" ng-hide="player1name" ng-click= "player1name= 'false'">+</button>
-					<div class = "team-name">{{TTT.player1}}</div>
+				<form ng-submit="TTT.setPlayer1(player1name)" id="p1-form">
+					<input type= "text" ng-model= "player1name" ng-hide="TTT.game.Player1" placeholder="Player 1 name.." >
+					<div class = "team-name">{{TTT.game.Player1}}</div>
 				</form>
-
+				<button id="Submit1" ng-hide="TTT.game.Player1" ng-click="TTT.setPlayer1(player1name)">Join</button>
+				<p ng-show="TTT.game.P1Move">Your move!</p>
 			</div>
+
 			<div class="middle-container">
 			</div>
+
 			<div class="right-container">
-
-				<form ng-submit = "TTT.player2(TTT.newPlayer2Name)">
-
-					<input type = "text" ng-model="TTT.player2" placeholder="Enter Team Name">
-					<div class = team-name>{{TTT.player2}}</div>
+				<form ng-submit = "TTT.setPlayer2(player2Name)">
+					<input type = "text" ng-hide="TTT.game.Player2" ng-model="player2Name" placeholder="Player 2 name..">
+					<div class = team-name>{{TTT.game.Player2}}</div>
+				</form>
+				<button id="Submit1" ng-hide="TTT.game.Player2" ng-click="TTT.setPlayer2(player2Name)">Join</button>
+				<p ng-show="TTT.game.P2Move">Your move!</p>
 			</div>
 
 			<div class="tic-tac-toe">
-
 				<div class="box" ng-bind="TTT.game.grid[$index].box" ng-repeat="box in TTT.game.grid" ng-click="TTT.getMove($index)"></div>
-
 			</div>
 
-			<div id = "reset">
-			 <a href="#" id="resetGame" ng-click="TTT.resetGame()">Start New Game</a>
+			<div ng-show="TTT.game.gameOver" id = "reset">
+			<p ng-show="TTT.game.showWinner">{{ TTT.game.showWinner }} </p>
+			<p ng-show="TTT.game.showCats">{{ TTT.game.showCats }} </p>
+			 <a href="#" id="resetGame" ng-click="TTT.resetGame()" ng-if="TTT.game.gameOver">Start New Game</a>
 			 </div>
+
 		</div>
 			<!-- <script src="js/app.js"></script> -->
 	</section>
